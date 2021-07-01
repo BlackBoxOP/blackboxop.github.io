@@ -233,11 +233,16 @@
         head.appendChild(style);
     }
 
-    addGlobalStyle('.ytp-ad-overlay-slot { display: none !important; }');
-    addGlobalStyle('.ytp-ad-image-overlay { display: none !important; }');
-    addGlobalStyle('.ytp-ad-overlay-image { display: none !important; }');
-    addGlobalStyle('.ytp-ad-overlay-container { display: none !important; }');
-    addGlobalStyle('.video-ads ytp-ad-module { display: none !important; }');
+  addGlobalStyle('.ytp-ad-overlay-slot { display: none !important; }');
+  addGlobalStyle('.ytp-ad-image-overlay { display: none !important; }');
+  addGlobalStyle('.ytp-ad-overlay-image { display: none !important; }');
+  addGlobalStyle('.ytp-ad-overlay-container { display: none !important; }');
+  addGlobalStyle('.video-ads ytp-ad-module { display: none !important; }');
+  window.setInterval(
+    function () {
+      var elm = document.querySelector('.ytp-ad-skip-button').style.display = "none";
+    },
+  3000);
 </script>
 
  </body>
