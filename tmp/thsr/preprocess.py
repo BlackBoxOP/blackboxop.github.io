@@ -6,7 +6,7 @@ from tensorflow.keras.utils import to_categorical
 import numpy as np
 from tqdm import tqdm
 
-DATA_PATH = "./splitAudio/"
+DATA_PATH = "/content/drive/Shareddrives/colab/thsr/splitAudio/"
 
 
 # Input: Folder Path
@@ -21,7 +21,7 @@ def get_labels(path=DATA_PATH):
 def wav2mfcc(file_path, max_len=11):
     wave, sr = librosa.load(file_path, mono=True, sr=None)
     wave = wave[::3]
-    mfcc = librosa.feature.mfcc(wave, sr=16000)
+    mfcc = librosa.feature.mfcc(wave, sr=16000, n_fft=1024)
 
     # If maximum length exceeds mfcc lengths then pad the remaining ones
     if (max_len > mfcc.shape[1]):
