@@ -11,14 +11,17 @@ rcgurl = reurl+'recognize'
 
 
 while True:
-    has_t = True
-    sess = requests.Session()
-    homepage = sess.get(domain + '/tra-tip-web/tip/tip001/tip121/query')
-    soup = BeautifulSoup(homepage.text, "lxml")
-    csrf = soup.find('input', attrs={"name": "_csrf"})['value']
-    quickTipToken = soup.find('input', attrs={"name": "quickTipToken"})['value']
-    cookie = sess.cookies.get_dict()['T4TIPSESSIONID']
-    sess.close()
+    try:
+        has_t = True
+        sess = requests.Session()
+        homepage = sess.get(domain + '/tra-tip-web/tip/tip001/tip121/query')
+        soup = BeautifulSoup(homepage.text, "lxml")
+        csrf = soup.find('input', attrs={"name": "_csrf"})['value']
+        quickTipToken = soup.find('input', attrs={"name": "quickTipToken"})['value']
+        cookie = sess.cookies.get_dict()['T4TIPSESSIONID']
+        sess.close()
+    except:
+        continue
     vcode = get_vcode(sess, rcgurl)
     while has_t:
         if 't' in vcode:
